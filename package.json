@@ -27,7 +27,7 @@
         "method"
     ],
     "engines": {
-        "node": ">= 6.x"
+        "node": ">= 8.x"
     },
     "dependencies": {
         "whatwg-fetch": "^3.0.0"
