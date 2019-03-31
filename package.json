@@ -1,0 +1,39 @@
+{
+    "name": "@whirler/client",
+    "version": "1.0.0",
+    "description": "A library support development single endpoint api (client).",
+    "author": "Jout V Hu (Giao Ho)",
+    "license": "MIT",
+    "main": "./src/index.js",
+    "types": "./src/index.d.ts",
+    "typescript:main": "./src/index.ts",
+    "scripts": {
+        "lint": "tslint -c ./config/tslint.json --project ./config/tsconfig.json",
+        "build": "tsc --project ./config/tsconfig.json"
+    },
+    "homepage": "https://github.com/joutvhu/whirler-client",
+    "bugs": {
+        "url": "https://github.com/joutvhu/whirler-client/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/joutvhu/whirler-client.git"
+    },
+    "keywords": [
+        "whirler-client",
+        "whirler client js",
+        "single endpoint",
+        "api",
+        "method"
+    ],
+    "engines": {
+        "node": ">= 6.x"
+    },
+    "dependencies": {
+        "whatwg-fetch": "^3.0.0"
+    },
+    "devDependencies": {
+        "tslint": "^5.14.0",
+        "typescript": "^3.3.4000"
+    }
+}
