@@ -4,9 +4,9 @@
     "description": "A library support development single endpoint api (client).",
     "author": "Jout V Hu (Giao Ho)",
     "license": "MIT",
-    "main": "./src/index.js",
-    "types": "./src/index.d.ts",
-    "typescript:main": "./src/index.ts",
+    "main": "lib/index.js",
+    "types": "./lib/index.d.ts",
+    "typescript:main": "./lib/index.ts",
     "scripts": {
         "lint": "tslint -c ./config/tslint.json --project ./config/tsconfig.json",
         "build": "tsc --project ./config/tsconfig.json"
