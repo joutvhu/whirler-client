@@ -5,9 +5,10 @@ export declare class WhirlerCore {
 }
 export declare class Whirler extends WhirlerCore {
     constructor(config?: Props);
-    protected call(func: String, args?: any[]): Promise<any>;
+    protected call(func: string, ...args: any[]): Promise<any>;
 }
 export declare class WhirlerBundle extends WhirlerCore {
     protected __packages: any;
+    __whirles: any;
     constructor(props?: Props);
 }

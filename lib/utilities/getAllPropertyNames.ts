@@ -1,7 +1,9 @@
 import {WhirlerCore} from '../type/Whirler';
 
 export default function getAllPropertyNames(obj: WhirlerCore) {
-    let result: any[] = [], temp;
+    let result: any[] = [];
+    let temp: any;
+
     try {
         while (obj && obj.constructor !== Object) {
             temp = Object.getOwnPropertyNames(obj);
@@ -15,5 +17,6 @@ export default function getAllPropertyNames(obj: WhirlerCore) {
     } catch (e) {
         // continue regardless of error
     }
+
     return result;
 }

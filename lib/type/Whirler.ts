@@ -12,6 +12,7 @@ export class WhirlerCore {
     constructor(props?: Props) {
         preventOverrideClass(WhirlerCore, this, [Whirler, WhirlerBundle]);
         verifyClassName(this.constructor['name']);
+
         if (props) this.__props = props;
     }
 }
@@ -19,24 +20,29 @@ export class WhirlerCore {
 export class Whirler extends WhirlerCore {
     constructor(config?: Props) {
         super(config);
+
         preventOverrideFunction(Whirler, notOverride, this);
         verifyWhirlerFunctions(this);
     }
 
-    protected async call(func : String, args?: any[]) {
+    protected async call(func: string, ...args) {
         verifyFunctionName(func);
+
         let header: any = {};
-        let body: any = { func };
-        if(this.__props.authorization)
+        let body: any = {func};
+
+        if (this.__props.authorization)
             header['Authorization'] = this.__props.authorization;
-        if (args) body.args = args;
+        if (args && args.length > 0) body.args = args;
         if (this.__props.namespace) body.nsp = this.__props.namespace;
-        return  await fetchQuery(this.__props.url || '', header, body);
+
+        return await fetchQuery(this.__props.url || '', header, body);
     }
 }
 
 export class WhirlerBundle extends WhirlerCore {
     protected __packages: any = {};
+    public __whirles: any = {};
 
     constructor(props?: Props) {
         super(props);

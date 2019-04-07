@@ -1,6 +1,6 @@
 export default interface Props {
     url?: string;
     parent?: any;
-    namespace?: string | string[] | Array<string>;
+    namespace?: string | string[];
     authorization?: string;
 }

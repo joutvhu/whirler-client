@@ -10,9 +10,9 @@
     "module": "./lib/index.mjs",
     "scripts": {
         "lint": "tslint -c ./config/tslint.json --project ./config/tsconfig.json",
-        "rename:mjs": "node config/rename.mjs.js",
         "build:cjs": "tsc --project ./config/tsconfig.json",
         "build:mjs": "tsc --project config/tsconfig.mjs.json",
+        "rename:mjs": "node config/rename.mjs.js",
         "build": "npm run build:mjs && npm run rename:mjs && npm run build:cjs"
     },
     "homepage": "https://github.com/joutvhu/whirler-client",
