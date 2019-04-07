@@ -1,6 +1,6 @@
 import {WhirlerCore} from '../type/Whirler';
 
-export default function getOwnPropertyNames(obj: WhirlerCore) {
+export default function getAllPropertyNames(obj: WhirlerCore) {
     let result: any[] = [], temp;
     try {
         while (obj && obj.constructor !== Object) {
