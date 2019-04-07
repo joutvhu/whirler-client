@@ -22,8 +22,15 @@ export default function combine(name: string, ...whirles: any) {
     for(let i in whirles) {
         Object.defineProperty(bundle.prototype, i, {
             get: function () {
-                if(!this.__packages[i])
-                    this.__packages[i] = new this.__whirles[i]();
+                if(!this.__packages[i]) {
+                    let whirler: any = new this.__whirles[i]();
+                    whirler.__config = {
+                        ...this.__config,
+                        ...whirler.__config,
+                        parent: this
+                    };
+                    this.__packages[i] = whirler;
+                }
                 return this.__packages[i];
             },
             configurable: false,

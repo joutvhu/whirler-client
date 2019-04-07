@@ -10,5 +10,4 @@ export declare class Whirler extends WhirlerCore {
 export declare class WhirlerBundle extends WhirlerCore {
     protected __packages: any;
     constructor(config?: Configer);
-    config(_config: any): void;
 }

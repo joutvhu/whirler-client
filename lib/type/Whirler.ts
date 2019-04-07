@@ -1,6 +1,6 @@
 import fetchQuery from '../utilities/fetcher';
 import {preventOverrideClass, preventOverrideFunction} from '../validation/preventOverride';
-import {verifyClassName} from '../validation/verifyName';
+import {verifyClassName, verifyFunctionName} from '../validation/verifyName';
 import verifyWhirlerFunctions from '../validation/verifyWhirlerFunctions';
 import Configer from './Configer';
 
@@ -24,6 +24,7 @@ export class Whirler extends WhirlerCore {
     }
 
     protected async call(func : String, args?: any[]) {
+        verifyFunctionName(func);
         let header: any = {};
         let body: any = { func };
         if(this.__config.authorization)
@@ -39,12 +40,5 @@ export class WhirlerBundle extends WhirlerCore {
 
     constructor(config?: Configer) {
         super(config);
-    }
-
-    config(_config) {
-        this.__config = {
-            ...this.__config,
-            ..._config
-        }
     }
 }
