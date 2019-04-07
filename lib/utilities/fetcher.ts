@@ -1,4 +1,4 @@
-import {fetch} from 'whatwg-fetch';
+import Fetch from 'whatwg-fetch';
 import WhirlerMessages from '../constants/WhirlerMessages';
 import WhirlerError from '../error/WhirlerError';
 
@@ -8,7 +8,7 @@ export default async function fetchQuery(url: string, header: any, body: any) {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     };
-    let response = await fetch(url, {
+    let response = await Fetch.fetch(url, {
         method: 'POST',
         headers,
         body: JSON.stringify(body)

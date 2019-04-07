@@ -25,7 +25,7 @@ export class Whirler extends WhirlerCore {
         verifyWhirlerFunctions(this);
     }
 
-    protected async call(func: string, ...args: any[]) {
+    protected async call(func: string, args?: any[]) {
         verifyFunctionName(func);
 
         let header: any = {};
