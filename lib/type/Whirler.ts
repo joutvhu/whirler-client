@@ -2,22 +2,22 @@ import fetchQuery from '../utilities/fetcher';
 import {preventOverrideClass, preventOverrideFunction} from '../validation/preventOverride';
 import {verifyClassName, verifyFunctionName} from '../validation/verifyName';
 import verifyWhirlerFunctions from '../validation/verifyWhirlerFunctions';
-import Configer from './Configer';
+import Props from './Props';
 
 const notOverride = ['call', 'get', 'set'];
 
 export class WhirlerCore {
-    protected __config: Configer = {};
+    protected __props: Props = {};
 
-    constructor(config?: Configer) {
+    constructor(props?: Props) {
         preventOverrideClass(WhirlerCore, this, [Whirler, WhirlerBundle]);
         verifyClassName(this.constructor['name']);
-        if (config) this.__config = config;
+        if (props) this.__props = props;
     }
 }
 
 export class Whirler extends WhirlerCore {
-    constructor(config?: Configer) {
+    constructor(config?: Props) {
         super(config);
         preventOverrideFunction(Whirler, notOverride, this);
         verifyWhirlerFunctions(this);
@@ -27,18 +27,18 @@ export class Whirler extends WhirlerCore {
         verifyFunctionName(func);
         let header: any = {};
         let body: any = { func };
-        if(this.__config.authorization)
-            header['Authorization'] = this.__config.authorization;
+        if(this.__props.authorization)
+            header['Authorization'] = this.__props.authorization;
         if (args) body.args = args;
-        if (this.__config.namespace) body.nsp = this.__config.namespace;
-        return  await fetchQuery(this.__config.url || '', header, body);
+        if (this.__props.namespace) body.nsp = this.__props.namespace;
+        return  await fetchQuery(this.__props.url || '', header, body);
     }
 }
 
 export class WhirlerBundle extends WhirlerCore {
     protected __packages: any = {};
 
-    constructor(config?: Configer) {
-        super(config);
+    constructor(props?: Props) {
+        super(props);
     }
 }

@@ -1,13 +1,13 @@
-import Configer from './Configer';
+import Props from './Props';
 export declare class WhirlerCore {
-    protected __config: Configer;
-    constructor(config?: Configer);
+    protected __props: Props;
+    constructor(props?: Props);
 }
 export declare class Whirler extends WhirlerCore {
-    constructor(config?: Configer);
+    constructor(config?: Props);
     protected call(func: String, args?: any[]): Promise<any>;
 }
 export declare class WhirlerBundle extends WhirlerCore {
     protected __packages: any;
-    constructor(config?: Configer);
+    constructor(props?: Props);
 }
