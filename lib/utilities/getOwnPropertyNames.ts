@@ -1,12 +1,12 @@
 import {WhirlerCore} from '../type/Whirler';
 
 export default function getOwnPropertyNames(obj: WhirlerCore) {
-    let result: any = [], temp;
+    let result: any[] = [], temp;
     try {
         while (obj && obj.constructor !== Object) {
             temp = Object.getOwnPropertyNames(obj);
             for (let i of temp) {
-                if (!result.includes(i))
+                if (result.indexOf(i) === -1)
                     result.push(i);
             }
 

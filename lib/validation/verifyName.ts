@@ -1,4 +1,4 @@
-import ErrorMessages from '../constants/ErrorMessages';
+import ExceptionMessages from '../constants/ExceptionMessages';
 import RegularExpression from '../constants/RegularExpression';
 import {FormattedError} from '../error/OtherErrors';
 
@@ -7,9 +7,9 @@ export function verifyClassName(name) {
         if(RegularExpression.CLASS_NAME.test(name))
             return true;
         else if(RegularExpression.FIRST_ALPHABETIC.test(name))
-            throw new FormattedError(ErrorMessages.CLASS_NAME_CONTAIN);
-        else throw new FormattedError(ErrorMessages.START_CLASS_NAME);
-    } else throw new FormattedError(ErrorMessages.SPECIFY_CLASS_NAME);
+            throw new FormattedError(ExceptionMessages.CLASS_NAME_CONTAIN);
+        else throw new FormattedError(ExceptionMessages.START_CLASS_NAME);
+    } else throw new FormattedError(ExceptionMessages.SPECIFY_CLASS_NAME);
 }
 
 export function verifyFunctionName(name) {
@@ -17,7 +17,7 @@ export function verifyFunctionName(name) {
         if(RegularExpression.FUNCTION_NAME.test(name))
             return true;
         else if(RegularExpression.FIRST_LOWERCASE.test(name))
-            throw new FormattedError(ErrorMessages.FUNCTION_NAME_CONTAIN);
-        else throw new FormattedError(ErrorMessages.START_FUNCTION_NAME);
-    } else throw new FormattedError(ErrorMessages.SPECIFY_FUNCTION_NAME);
+            throw new FormattedError(ExceptionMessages.FUNCTION_NAME_CONTAIN);
+        else throw new FormattedError(ExceptionMessages.START_FUNCTION_NAME);
+    } else throw new FormattedError(ExceptionMessages.SPECIFY_FUNCTION_NAME);
 }

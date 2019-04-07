@@ -1,1 +1,1 @@
-export default function fetchQuery(url: String, header: any, body: any): Promise<any>;
+export default function fetchQuery(url: string, header: any, body: any): Promise<any>;

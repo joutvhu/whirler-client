@@ -1,2 +1,2 @@
 import { WhirlerCore } from '../type/Whirler';
-export default function getOwnPropertyNames(obj: WhirlerCore): any;
+export default function getOwnPropertyNames(obj: WhirlerCore): any[];

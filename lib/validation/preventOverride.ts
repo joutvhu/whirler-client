@@ -1,4 +1,4 @@
-import ErrorMessages from '../constants/ErrorMessages';
+import ExceptionMessages from '../constants/ExceptionMessages';
 import {OverridingError} from '../error/OtherErrors';
 import {WhirlerCore} from '../type/Whirler';
 
@@ -14,7 +14,7 @@ export function preventOverrideClass(sighClass: any, sighObj: WhirlerCore, excep
             }
         }
         if (error)
-            throw new OverridingError(ErrorMessages.OVERRIDE_CLASS.replace('[ClassName]', sighClass['name']));
+            throw new OverridingError(ExceptionMessages.OVERRIDE_CLASS.replace('[ClassName]', sighClass['name']));
     }
 }
 
@@ -24,7 +24,7 @@ export function preventOverrideFunction(sighClass: any, functions: string[], sig
     while (obj instanceof sighClass) {
         for (let i of functions) {
             if (typeof i === 'string' && obj.hasOwnProperty(i))
-                throw new OverridingError(ErrorMessages.OVERRIDE_FUNCTION.replace('[FunctionName]', i)
+                throw new OverridingError(ExceptionMessages.OVERRIDE_FUNCTION.replace('[FunctionName]', i)
                     .replace('[ClassName]', sighClass['name']));
         }
 

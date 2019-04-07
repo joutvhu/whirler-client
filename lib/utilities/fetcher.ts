@@ -1,8 +1,8 @@
 import {fetch} from 'whatwg-fetch';
-import ErrorMessages from '../constants/ErrorMessages';
+import WhirlerMessages from '../constants/WhirlerMessages';
 import WhirlerError from '../error/WhirlerError';
 
-export default async function fetchQuery(url: String, header: any, body: any) {
+export default async function fetchQuery(url: string, header: any, body: any) {
     let headers = {
         ...header,
         'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ export default async function fetchQuery(url: String, header: any, body: any) {
     });
     if (response.ok) {
         let result = await response.json();
-        if (result == null) throw new WhirlerError(ErrorMessages.NO_RESPONSE);
+        if (result == null) throw new WhirlerError(WhirlerMessages.NO_RESPONSE);
         if (result.error === undefined && typeof result.data !== undefined) {
             return result.data;
         } else {
@@ -28,11 +28,11 @@ export default async function fetchQuery(url: String, header: any, body: any) {
                     error.message = result.error.msg;
                 if (error.message == null) error = {
                     code: 1,
-                    message: ErrorMessages.UNKNOWN
+                    message: WhirlerMessages.UNKNOWN
                 };
                 throw new WhirlerError(error);
             }
-            throw new WhirlerError(ErrorMessages.INCORRECT_RESPONSE);
+            throw new WhirlerError(WhirlerMessages.INCORRECT_RESPONSE);
         }
     } else {
         throw new WhirlerError({
