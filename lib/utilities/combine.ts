@@ -32,9 +32,7 @@ export default function combine(name: string, ...whirles: any) {
                     this.__packages[i] = whirler;
                 }
                 return this.__packages[i];
-            },
-            configurable: false,
-            writable: false
+            }
         });
     }
 
