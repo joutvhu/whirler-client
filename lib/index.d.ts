@@ -1,5 +1,5 @@
 export { Whirler, WhirlerBundle } from './type/Whirler';
-export * from './type/Author';
-export * from './error/WhirlerError';
-export * from './utilities/combine';
-export * from './utilities/build';
+export { default as Author } from './type/Author';
+export { default as WhirlerError } from './error/WhirlerError';
+export { default as combine } from './utilities/combine';
+export { default as build } from './utilities/build';
