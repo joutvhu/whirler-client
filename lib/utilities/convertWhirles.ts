@@ -50,3 +50,13 @@ export function convertWhirles(whirles) {
 
     return whirles;
 }
+
+export function convertObjectToList(args) {
+    if (args instanceof Array)
+        return args;
+    else if (typeof args === 'object') {
+        let temp: any[] = [];
+        for (let i of args) temp.push(i);
+        return temp;
+    } else return [];
+}

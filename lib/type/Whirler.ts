@@ -1,6 +1,7 @@
 import fetchQuery from '../utilities/fetcher';
 import {preventOverrideClass, preventOverrideFunction} from '../validation/preventOverride';
 import {verifyClassName, verifyFunctionName} from '../validation/verifyName';
+import {convertObjectToList} from '../utilities/convertWhirles';
 import verifyWhirlerFunctions from '../validation/verifyWhirlerFunctions';
 import Props from './Props';
 
@@ -27,6 +28,7 @@ export class Whirler extends WhirlerCore {
 
     protected async call(func: string, args?: any[]) {
         verifyFunctionName(func);
+        args = convertObjectToList(args);
 
         let header: any = {};
         let body: any = {func};
