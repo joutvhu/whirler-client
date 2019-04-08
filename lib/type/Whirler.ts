@@ -54,5 +54,7 @@ export class WhirlerBundle extends WhirlerCore {
 
     constructor(props: Props) {
         super(props);
+
+        this.props['__packages'] = {};
     }
 }
