@@ -2,7 +2,7 @@ import Props from '../type/Props';
 import {WhirlerBundle, WhirlerCore} from '../type/Whirler';
 import {verifyClassName} from '../validation/verifyName';
 import {convertWhirles} from './convertWhirles';
-import {createES5Class} from './dynamicDefinition';
+import {createClass} from './dynamicDefinition';
 
 export default function combine(name: string, ...whirles: any) {
     verifyClassName(name);
@@ -10,10 +10,7 @@ export default function combine(name: string, ...whirles: any) {
     if (whirles.prototype instanceof WhirlerCore)
         return whirles;
 
-    let bundle = createES5Class(name, WhirlerBundle, function (this: WhirlerBundle) {
-        WhirlerBundle.constructor.call(this);
-        return this;
-    });
+    let bundle: any = createClass(name, WhirlerBundle);
 
     Object.defineProperty(bundle.prototype, '__whirles', {
         configurable: false,
