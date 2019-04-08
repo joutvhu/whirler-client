@@ -1,7 +1,8 @@
+import {convertObjectToList} from '../utilities/convertWhirles';
+import {configurable} from '../utilities/decorators';
 import fetchQuery from '../utilities/fetcher';
 import {preventOverrideClass, preventOverrideFunction} from '../validation/preventOverride';
 import {verifyClassName, verifyFunctionName} from '../validation/verifyName';
-import {convertObjectToList} from '../utilities/convertWhirles';
 import verifyWhirlerFunctions from '../validation/verifyWhirlerFunctions';
 import Props from './Props';
 
@@ -9,6 +10,11 @@ const notOverride = ['call', 'get', 'set'];
 
 export class WhirlerCore {
     protected __props: Props = {};
+
+    @configurable(false)
+    public get props(): Props  {
+        return this.__props;
+    }
 
     constructor(props?: Props) {
         preventOverrideClass(WhirlerCore, this, [Whirler, WhirlerBundle]);
@@ -19,8 +25,8 @@ export class WhirlerCore {
 }
 
 export class Whirler extends WhirlerCore {
-    constructor(config?: Props) {
-        super(config);
+    constructor(props?: Props) {
+        super(props);
 
         preventOverrideFunction(Whirler, notOverride, this);
         verifyWhirlerFunctions(this);
@@ -44,7 +50,7 @@ export class Whirler extends WhirlerCore {
 
 export class WhirlerBundle extends WhirlerCore {
     protected __packages: any = {};
-    public __whirles: any = {};
+    protected __whirles: any = {};
 
     constructor(props?: Props) {
         super(props);
