@@ -1,3 +1,4 @@
+import Props from '../type/Props';
 import {WhirlerBundle, WhirlerCore} from '../type/Whirler';
 import {verifyClassName} from '../validation/verifyName';
 import {convertWhirles} from './convertWhirles';
@@ -26,16 +27,17 @@ export default function combine(name: string, ...whirles: any) {
                 configurable: false,
                 enumerable: true,
                 get(this: WhirlerBundle): WhirlerCore {
-                    if (!this.__packages) this.__packages = {};
-                    if (!this.__packages[i]) {
-                        let whirler: any = new this.__whirles[i]();
+                    if (!this.props['__packages']) this.props['__packages'] = {};
+                    if (!this.props['__packages'][i]) {
+                        const props: Props = this.props.propsFor(i);
+                        let whirler: any = new this.__whirles[i](props);
                         whirler.__props = {
                             ...whirler.__props,
                             parent: this
                         };
-                        this.__packages[i] = whirler;
+                        this.props['__packages'][i] = whirler;
                     }
-                    return this.__packages[i];
+                    return this.props['__packages'][i];
                 }
             });
         }
