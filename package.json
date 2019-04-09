@@ -1,6 +1,6 @@
 {
     "name": "@whirler/client",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "A library support development single endpoint api (client).",
     "author": "Jout V Hu (Giao Ho)",
     "license": "MIT",
@@ -19,10 +19,7 @@
         "lib": "./lib"
     },
     "files": [
-        "lib/index.d.ts",
-        "lib/index.js",
-        "lib/index.mjs",
-        "lib/index.ts",
+        "lib",
         "README.md",
         "LICENSE"
     ],
