@@ -1,16 +1,31 @@
 {
     "name": "@whirler/client",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "A library support development single endpoint api (client).",
     "author": "Jout V Hu (Giao Ho)",
     "license": "MIT",
-    "main": "./src/index.js",
-    "types": "./src/index.d.ts",
-    "typescript:main": "./src/index.ts",
+    "main": "lib/index.js",
+    "types": "./lib/index.d.ts",
+    "typescript:main": "./lib/index.ts",
+    "module": "./lib/index.mjs",
     "scripts": {
         "lint": "tslint -c ./config/tslint.json --project ./config/tsconfig.json",
-        "build": "tsc --project ./config/tsconfig.json"
+        "build:cjs": "tsc --project ./config/tsconfig.json",
+        "build:mjs": "tsc --project config/tsconfig.mjs.json",
+        "rename:mjs": "node config/rename.mjs.js",
+        "build": "npm run build:mjs && npm run rename:mjs && npm run build:cjs"
     },
+    "directories": {
+        "lib": "./lib"
+    },
+    "files": [
+        "lib/index.d.ts",
+        "lib/index.js",
+        "lib/index.mjs",
+        "lib/index.ts",
+        "README.md",
+        "LICENSE"
+    ],
     "homepage": "https://github.com/joutvhu/whirler-client",
     "bugs": {
         "url": "https://github.com/joutvhu/whirler-client/issues"
@@ -20,7 +35,9 @@
         "url": "http://github.com/joutvhu/whirler-client.git"
     },
     "keywords": [
+        "whirler",
         "whirler-client",
+        "whirler client",
         "whirler client js",
         "single endpoint",
         "api",
@@ -34,6 +51,6 @@
     },
     "devDependencies": {
         "tslint": "^5.14.0",
-        "typescript": "^3.3.4000"
+        "typescript": "^3.4.2"
     }
 }
