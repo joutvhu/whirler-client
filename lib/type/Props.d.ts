@@ -12,6 +12,8 @@ export default class Props {
     readonly headers: any;
     readonly namespace: string | string[];
     readonly parent: WhirlerCore;
+    readonly current: WhirlerCore;
+    readonly endpoint: string | null;
     authorization: string;
     propsFor(name: string): Props;
 }

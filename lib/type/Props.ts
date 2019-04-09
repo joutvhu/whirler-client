@@ -33,6 +33,16 @@ export default class Props {
         return this.__parent;
     }
 
+    public get current(): WhirlerCore {
+        return this.__this;
+    }
+
+    public get endpoint() {
+        if(this.__config)
+            return this.__config.url;
+        else return null;
+    }
+
     public get authorization(): string {
         if (!this.__headers)
             this.__headers = {};

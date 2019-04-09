@@ -27,12 +27,7 @@ export default function combine(name: string, ...whirles: any) {
                     if (!this.props['__packages']) this.props['__packages'] = {};
                     if (!this.props['__packages'][i]) {
                         const props: Props = this.props.propsFor(i);
-                        let whirler: any = new this.__whirles[i](props);
-                        whirler.__props = {
-                            ...whirler.__props,
-                            parent: this
-                        };
-                        this.props['__packages'][i] = whirler;
+                        this.props['__packages'][i] = new this.__whirles[i](props);
                     }
                     return this.props['__packages'][i];
                 }

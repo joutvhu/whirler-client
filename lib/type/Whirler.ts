@@ -40,17 +40,17 @@ export class Whirler extends WhirlerCore {
         let header: any = {};
         let body: any = {func};
 
-        if (this.__props.authorization)
-            header['Authorization'] = this.__props.authorization;
+        if (this.props.authorization)
+            header['Authorization'] = this.props.authorization;
         if (args && args.length > 0) body.args = args;
-        if (this.__props.namespace) body.nsp = this.__props.namespace;
+        if (this.props.namespace) body.nsp = this.props.namespace;
 
-        return await fetchQuery(this.__props.config.url || '', header, body);
+        return await fetchQuery(this.props.endpoint || '', header, body);
     }
 }
 
 export class WhirlerBundle extends WhirlerCore {
-    protected __whirles: any = {};
+    protected __whirles: any;
 
     constructor(props: Props) {
         super(props);
